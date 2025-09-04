@@ -1,0 +1,27 @@
+export const strings = {
+    title: "Yo're Invited!",
+    description:
+        "Please fill out the form below to confirm your attendance and share your details",
+    eventDate: "2025-09-30", // YYYY-MM-DD format
+    eventDateLabel: "Event Date",
+    eventLocation: "Beat Hanoun",
+    eventLocationLabel: "Event Location",
+    nameLabel: "Full Name",
+    namePlaceholder: "Enter your full name",
+    emailLabel: "Email Address",
+    emailPlaceholder: "Enter your email address",
+    accompanyLabel: "Number of Guests",
+    accompanyPlaceholder: "Enter number of guests",
+    rsvpLabel: "Will you attend?",
+    yesOption: "Yes, I'll be there!",
+    noOption: "Sorry, I can't make it",
+    notesLabel: "Notes",
+    notesPlaceholder: "Any dietary restrictions or special requests?",
+    optionalText: "(Optional)",
+    submitButton: "Submit RSVP",
+    loadingText: "Sending...",
+    thankYouMessage: "Thank you for your response!",
+    viewOnMapButton: "View Location on Google Maps",
+    sendFromEmail: "onboarding@resend.dev",
+    sendToEmail: process.env.EMAIL_TO,
+};
