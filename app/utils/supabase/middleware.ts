@@ -15,6 +15,7 @@ export async function updateSession(request: NextRequest) {
                     return request.cookies.getAll()
                 },
                 setAll(cookiesToSet) {
+                    // eslint-disable-next-line @typescript-eslint/no-unused-vars
                     cookiesToSet.forEach(({ name, value, options }) => request.cookies.set(name, value))
                     supabaseResponse = NextResponse.next({
                         request,
@@ -37,16 +38,11 @@ export async function updateSession(request: NextRequest) {
         data: { user },
     } = await supabase.auth.getUser()
 
-    if (
-        !user &&
-        !request.nextUrl.pathname.startsWith('/login') &&
-        !request.nextUrl.pathname.startsWith('/auth') &&
-        !request.nextUrl.pathname.startsWith('/error')
-    ) {
-        // no user, potentially respond by redirecting the user to the login page
-        const url = request.nextUrl.clone()
-        url.pathname = '/login'
-        return NextResponse.redirect(url)
+
+    if (!user && request.nextUrl.pathname.startsWith("/admin")) {
+        const url = request.nextUrl.clone();
+        url.pathname = "/login";
+        return NextResponse.redirect(url);
     }
 
     // IMPORTANT: You *must* return the supabaseResponse object as it is.

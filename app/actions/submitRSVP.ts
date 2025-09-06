@@ -12,7 +12,7 @@ export async function submitRSVP(formData: FormData) {
     const attendance = formData.get("attendance");
     const notes = formData.get("notes");
 
-    const { data, error } = await supabase.from("rsvp").insert([
+    const { data, error } = await supabase.from("rsvps").insert([
         {
             name,
             email,
@@ -22,7 +22,7 @@ export async function submitRSVP(formData: FormData) {
         },
     ]);
 
-    console.log(data, "data_submitRSVP");
+    // console.log(data, "data_submitRSVP");
 
     if (error) {
         console.error("Error submitting RSVP:", error);
