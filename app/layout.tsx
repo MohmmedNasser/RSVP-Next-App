@@ -18,10 +18,10 @@ const spline_Sans = Spline_Sans({
     subsets: ["latin"],
 });
 
-const playfair_Display = Playfair_Display({
-    variable: "--font-playfair-display",
-    subsets: ["latin"],
-});
+// const playfair_Display = Playfair_Display({
+//     variable: "--font-playfair-display",
+//     subsets: ["latin"],
+// });
 
 export const metadata: Metadata = {
     title: "Event RSVP",
