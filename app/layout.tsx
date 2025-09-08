@@ -37,7 +37,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${spline_Sans.className} ${playfair_Display.className} antialiased`}
+                className={`${spline_Sans.className} ${playfair_Display.variable} antialiased`}
             >
                 {children}
                 <Toaster />

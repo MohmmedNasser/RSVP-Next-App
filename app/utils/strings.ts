@@ -2,7 +2,7 @@ export const strings = {
     title: "Yo're Invited!",
     description:
         "Please fill out the form below to confirm your attendance and share your details",
-    eventDate: "2025-09-30", // YYYY-MM-DD format
+    eventDate: "2025-12-31", // YYYY-MM-DD format
     eventDateLabel: "Event Date",
     eventLocation: "Bernabéu",
     eventLocationLabel: "Event Location",
