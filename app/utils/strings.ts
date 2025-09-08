@@ -4,7 +4,7 @@ export const strings = {
         "Please fill out the form below to confirm your attendance and share your details",
     eventDate: "2025-09-30", // YYYY-MM-DD format
     eventDateLabel: "Event Date",
-    eventLocation: "Beat Hanoun",
+    eventLocation: "Bernabéu",
     eventLocationLabel: "Event Location",
     nameLabel: "Full Name",
     namePlaceholder: "Enter your full name",

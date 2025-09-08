@@ -13,12 +13,12 @@ import { Toaster } from "sonner";
 //     subsets: ["latin"],
 // });
 
-export const spline_Sans = Spline_Sans({
+const spline_Sans = Spline_Sans({
     variable: "--font-spline-sans",
     subsets: ["latin"],
 });
 
-export const playfair_Display = Playfair_Display({
+const playfair_Display = Playfair_Display({
     variable: "--font-playfair-display",
     subsets: ["latin"],
 });
@@ -37,7 +37,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${spline_Sans.className} ${playfair_Display.variable} antialiased`}
+                className={`${spline_Sans.className} ${playfair_Display.className} antialiased`}
             >
                 {children}
                 <Toaster />

@@ -21,10 +21,10 @@ const page = async () => {
             <header className="shadow-sm py-4 w-full">
                 <div className="container mx-auto">
                     <div className="flex items-center justify-between">
-                        <h1 className="text-lg font-bold text-black/85">
+                        <h1 className="text-md md:text-lg font-bold text-black/85">
                             RSVP Admin Panel
                         </h1>
-                        <div className="flex items-center gap-5">
+                        <div className="flex items-center gap-2 md:gap-5">
                             <Link href="/">
                                 <Button
                                     variant={"ghost"}

@@ -12,6 +12,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { strings } from "../utils/strings";
 import { Textarea } from "@/components/ui/textarea";
 import { submitRSVP } from "../actions/submitRSVP";
+import emailjs from "@emailjs/browser";
 
 const RSVPForm = () => {
     const [name, setName] = useState("");
@@ -29,6 +30,27 @@ const RSVPForm = () => {
             "_blank"
         );
     };
+
+    if (typeof window !== "undefined") {
+        emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string);
+    }
+
+    const templateParams = {
+        name: name,
+        email: email,
+        accompany: accompany,
+        attendance: attendance,
+    };
+
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+
+    if (!serviceId || !templateId) {
+        console.error("EmailJS service ID or template ID is not configured");
+        toast.error("Error", {
+            description: "Email service not configured",
+        });
+    }
 
     const handleSumbit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -53,20 +75,33 @@ const RSVPForm = () => {
         console.log(result, "result");
 
         if (result.success) {
-            toast.success("Success", {
-                description: result.message,
-            });
-            setName("");
-            setEmail("");
-            setAccompany(null);
-            setAttendance("yes");
-            setNotes("");
-            setIsLoading(false);
-            setErrors({});
+            if (serviceId && templateId) {
+                emailjs.send(serviceId, templateId, templateParams).then(
+                    () => {
+                        toast.success("Success", {
+                            description: result.message,
+                        });
+                        setName("");
+                        setEmail("");
+                        setAccompany(null);
+                        setAttendance("yes");
+                        setNotes("");
+                        setIsLoading(false);
+                        setErrors({});
+                    },
+                    (error) => {
+                        console.log("FAILED...", error);
+                        toast.error("Error", {
+                            description: error,
+                        });
+                    }
+                );
+            }
         } else {
             toast.error("Error", {
                 description: result.message,
             });
+            setIsLoading(false);
             if (result.error) {
                 if (result.error.code === "23505") {
                     setErrors({ email: "Email already exists" });
@@ -80,7 +115,7 @@ const RSVPForm = () => {
         <div className="max-w-xl mx-auto mt-10 mb-5 drop-shadow-[0_35px_35px_rgba(0,0,0,0.10)] border border-gray-50 bg-[#fcfcfc] px-6 py-8 rounded-2xl">
             <h6 className="text-2xl font-bold mb-5">RSVP</h6>
             <div className="mb-7 space-y-2">
-                <Label htmlFor="select_date">{strings.eventDate}</Label>
+                <Label htmlFor="select_date">{strings.eventDateLabel}</Label>
                 <Calendar
                     mode="single"
                     selected={new Date(strings.eventDate)}

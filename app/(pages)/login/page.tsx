@@ -19,12 +19,12 @@ const Login = () => {
     return (
         <section className="flex flex-col justify-center items-center min-h-screen ">
             <div className="mb-5 text-center">
-                <h1 className="text-5xl font-bold">Admin Login</h1>
+                <h1 className="text-3xl md:text-5xl font-bold">Admin Login</h1>
                 <p className="mt-4 text-md text-gray-700 text-center">
                     Access the event management dashboard
                 </p>
             </div>
-            <div className="flex flex-col items-center justify-center border border-gray-200 bg-gray-50/50 px-5 py-8 shadow-sm min-w-md rounded-2xl">
+            <div className="flex flex-col items-center justify-center border border-gray-200 bg-gray-50/50 px-5 py-8 shadow-sm min-w-[350px] max-w-md md:min-w-md  rounded-2xl">
                 <form action={formAction} className="w-full space-y-5">
                     <div className="space-y-3">
                         <Label htmlFor="email">Email Address</Label>

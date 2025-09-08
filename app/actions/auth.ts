@@ -9,9 +9,9 @@ export async function signIn(prevState: { error: string } | null, formData: Form
     const password = formData.get('password') as string;
 
     // Validate that email and password are not empty
-    // if (!email || !password) {
-    //     return { error: "Missing email or password" };
-    // }
+    if (!email || !password) {
+        return { error: "Missing email or password" };
+    }
 
     const { error, data } = await supabase.auth.signInWithPassword({
         email,

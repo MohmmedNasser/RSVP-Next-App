@@ -4,8 +4,10 @@ export default function Home() {
     return (
         <main className="py-20">
             <div className="flex flex-col items-center justify-center">
-                <h1 className="text-6xl font-bold">You&apos;re Invited!</h1>
-                <h2 className="mt-4 text-md text-gray-700">
+                <h1 className="text-4xl md:text-6xl font-bold">
+                    You&apos;re Invited!
+                </h1>
+                <h2 className="mt-4 text-md text-gray-700 text-center">
                     Please fill out the form below to confirm your attendance
                     and share your details
                 </h2>
